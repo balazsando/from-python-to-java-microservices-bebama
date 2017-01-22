@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by cickib on 2017.01.10..
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
  */
-
 public class LocationModel {
 
     private String city;
@@ -14,6 +15,11 @@ public class LocationModel {
     private String countryCode;
     private static List<LocationModel> allLocations = new ArrayList<>();
 
+    /**
+     * @param city
+     * @param country
+     * @param countryCode
+     */
     public LocationModel(String city, String country, String countryCode) {
         this.city = city;
         this.country = country;

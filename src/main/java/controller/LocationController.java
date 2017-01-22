@@ -8,12 +8,20 @@ import spark.Request;
 import spark.Response;
 
 /**
- * Created by cickib on 2017.01.09..
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
  */
-
 public class LocationController {
 
-    //   JSON keys: {city, country, countryCode}
+    /**
+     * Extract location details
+     *
+     * @param req - incoming request
+     * @param res - server response
+     * @return Response. Cause why not
+     * @throws ParseException
+     */
     public static Response getData(Request req, Response res) throws ParseException {
         JSONObject jsonLocation = (JSONObject) new JSONParser().parse(req.queryParams().iterator().next());
         new LocationModel(jsonLocation.get("city").toString(),

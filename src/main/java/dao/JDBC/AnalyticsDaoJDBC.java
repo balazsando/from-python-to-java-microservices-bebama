@@ -7,8 +7,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
+ */
 public class AnalyticsDaoJDBC extends AbstractDaoJDBC implements AnalyticsDao{
 
+    /**
+     * Insert/Update Analytics details in DB
+     *
+     * @param model - Analytics instance to add/update
+     */
     public void add(Analytics model) {
         try (Connection connection = AbstractDaoJDBC.getConnection()) {
             PreparedStatement query;
@@ -35,10 +45,24 @@ public class AnalyticsDaoJDBC extends AbstractDaoJDBC implements AnalyticsDao{
         }
     }
 
+    /**
+     * Load Analytics details from DB for given webshop
+     *
+     * @param webshop - webshop's ID
+     * @return List of Analytics objects
+     */
     public List<Analytics> findByWebshop(int webshop) {
         return getAnalyticsList("SELECT * FROM webshopAnalytics WHERE webshop_id ='" + webshop + "';");
     }
 
+    /**
+     * Load Analytics details from DB for given webshop in time interval
+     *
+     * @param webshop - webshop's ID
+     * @param start - start of time interval
+     * @param end - end of time interval
+     * @return List of Analytics objects
+     */
     public List<Analytics> findByWebshopTime(int webshop, Timestamp start, Timestamp end) {
         return getAnalyticsList("SELECT * FROM webshopAnalytics" +
                 " WHERE webshop_id ='" + webshop +
@@ -70,6 +94,12 @@ public class AnalyticsDaoJDBC extends AbstractDaoJDBC implements AnalyticsDao{
         return result;
     }
 
+    /**
+     * Find Analytics details in DB by session ID
+     *
+     * @param sessionId
+     * @return Analytics object with matching session ID
+     */
     public List<Analytics> findSessionId(String sessionId) {
         return getAnalyticsList("SELECT * FROM webshopAnalytics WHERE session_id ='" + sessionId + "';");
     }

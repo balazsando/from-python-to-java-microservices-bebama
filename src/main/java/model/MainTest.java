@@ -2,9 +2,6 @@ package model;
 
 import java.net.URISyntaxException;
 
-/**
- * Created by makaimark on 2017.01.11..
- */
 public class MainTest {
 
     public static void main(String[] args) {

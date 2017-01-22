@@ -7,13 +7,32 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
+ */
 public class LocationVisitorDaoJDBC extends AnalyticsDaoJDBC implements LocationVisitorDao{
 
+    /**
+     * Find top locations for given webshop
+     *
+     * @param webshop - webshop's ID
+     * @return List of locations and their number of visitors
+     */
     public List<LocationVisitor> locationsByWebshop(int webshop) {
         return getLocationList("SELECT count(*) AS totalVisitors, location FROM webshopAnalytics " +
                 "WHERE webshop_id ='" + webshop + "' GROUP BY location ORDER BY totalVisitors LIMIT 10;");
     }
 
+    /**
+     * Find top locations for given webshop in given time interval
+     *
+     * @param webshop - webshop's ID
+     * @param start - start of time interval
+     * @param end - end of time interval
+     * @return List of locations and their number of visitors
+     */
     public List<LocationVisitor> locationsByWebshopTime(int webshop, Timestamp start, Timestamp end) {
         return getLocationList("SELECT count(*) AS totalVisitors, location FROM webshopAnalytics " +
                 " WHERE webshop_id ='" + webshop +

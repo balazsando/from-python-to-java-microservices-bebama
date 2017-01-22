@@ -9,12 +9,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+/**
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
+ */
 public class VisitTimeController {
 
+    /**
+     * Calculate average visit time
+     *
+     * @param webshop - webshop's ID
+     * @return visit time details
+     */
     public static Map<String, String> averageVisitTime(Integer webshop) {
         return countAverage(new AnalyticsDaoJDBC().findByWebshop(webshop));
     }
 
+    /**
+     * Calculate average visit time
+     *
+     * @param webshop - webshop's ID
+     * @param startTime - start of time interval
+     * @param endTime - end of time interval
+     * @return visit time details
+     */
     public static Map<String, String> averageVisitTimeByTime(Integer webshop, Timestamp startTime, Timestamp endTime) {
         return countAverage(new AnalyticsDaoJDBC().findByWebshopTime(webshop, startTime, endTime));
     }

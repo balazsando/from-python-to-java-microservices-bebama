@@ -5,11 +5,24 @@ import org.apache.http.client.utils.URIBuilder;
 import java.net.URISyntaxException;
 
 /**
- * Created by makaimark on 2017.01.11..
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
  */
 public class Graph {
     public static final String API_URL = "http://chart.apis.google.com/chart?";
 
+    /**
+     * Draw a graph with given paramaters
+     *
+     * @param size
+     * @param name
+     * @param values
+     * @param partition
+     * @param colors
+     * @return - URL for generated graph
+     * @throws URISyntaxException
+     */
     public String buildGraphURL(String size, String name, String values, String partition, String colors) throws URISyntaxException {
         URIBuilder builder = new URIBuilder(API_URL);
         builder.addParameter("chs", size); // 200x400

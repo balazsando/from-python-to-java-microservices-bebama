@@ -4,11 +4,15 @@ import java.io.OutputStream;
 import java.util.Properties;
 
 /**
- * Created by cickib on 2017.01.09..
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
  */
-
 public class PropertiesConfig {
 
+    /**
+     * Create config file for DB connection
+     */
     public static void config() {
 
         Properties prop = new Properties();

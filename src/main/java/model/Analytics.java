@@ -3,6 +3,11 @@ package model;
 import java.sql.Timestamp;
 import java.util.Currency;
 
+/**
+ * @author Bebama
+ * @version 1.0
+ * @since 1.0
+ */
 public class Analytics {
 
     private Integer id;
@@ -14,6 +19,15 @@ public class Analytics {
     private Float amount;
     private Currency currency;
 
+    /**
+     * @param webshopID
+     * @param sessionId
+     * @param startTime
+     * @param endTime
+     * @param location
+     * @param amount
+     * @param currency
+     */
     public Analytics(Integer webshopID, String sessionId, Timestamp startTime, Timestamp endTime, LocationModel location, Float amount, String currency) {
         this.webshopId = webshopID;
         this.sessionId = sessionId;
@@ -99,6 +113,9 @@ public class Analytics {
                 "currency: " + this.currency;
     }
 
+    /**
+     * @return number of seconds between start and end of the session
+     */
     public Integer secondsSpent() {
         return Math.toIntExact((this.getEndTime().getTime()-this.getStartTime().getTime()) / 1000);
     }
